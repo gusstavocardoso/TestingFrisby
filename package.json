@@ -9,11 +9,22 @@
     "booker": "jest tests/restful-booker",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "gustavo cardoso",
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "keywords": [
+    "API Test Automation",
+    "Frisby.js",
+    "API Tests"
+  ],
+  "author": "Gustavo Cardoso",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
     "frisby": "^2.1.3",
     "jest": "^27.4.5"
   }

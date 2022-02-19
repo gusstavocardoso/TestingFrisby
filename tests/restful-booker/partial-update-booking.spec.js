@@ -1,8 +1,20 @@
 const frisby = require('frisby');
 
+import Book from '../../model/book.js'
+
 let token;
 
 describe('Requisições PATCH com Frisby', () => {
+
+    beforeEach(() => {
+        frisby.globalSetup({
+            request: {
+                headers: {
+                    'cookie': `token=${token}`
+                }
+            }
+        });
+    });
 
     it('Deve gerar o token do usuario', function () {
         return frisby
@@ -15,23 +27,11 @@ describe('Requisições PATCH com Frisby', () => {
                 token = res.json.token;
                 console.log(token);
             });
-
     });
 
     it('Deve atualizar parcialmente um livro', function () {
         return frisby
-            .setup({
-                request: {
-                    headers: {
-                        // 'Authorization': 'Basic ' + Buffer.from("admin:password123").toString('base64')
-                        'cookie': `token=${token}`
-                    }
-                }
-            })
-            .patch('https://restful-booker.herokuapp.com/booking/2', {
-                firstname: "Joe",
-                lastname: "Satriani",
-            })
+            .patch('https://restful-booker.herokuapp.com/booking/2', Book.partilUpdateBook())
             .inspectJSON()
             .expect('status', 200);
     });

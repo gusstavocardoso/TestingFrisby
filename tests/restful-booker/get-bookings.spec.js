@@ -12,7 +12,7 @@ describe('Requisições GET com Frisby', () => {
 
     it('Deve retornar um livro pelo id', function () {
         return frisby
-            .get('https://restful-booker.herokuapp.com/booking/17',)
+            .get('https://restful-booker.herokuapp.com/booking/1',)
             .inspectJSON()
             .inspectStatus()
             .expect('status', 200);
