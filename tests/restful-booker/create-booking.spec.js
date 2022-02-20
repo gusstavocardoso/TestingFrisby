@@ -9,6 +9,11 @@ describe('Requisições POST com Frisby', () => {
             .post('https://restful-booker.herokuapp.com/booking', Book.createBook())
             .inspectJSON()
             .expect('status', 200)
+            .expect('json', 'booking', {
+                firstname: "Jimi",
+                lastname: "Hendrix",
+                totalprice: 111,
+            });
     });
 });
 

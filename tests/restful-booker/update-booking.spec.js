@@ -33,6 +33,17 @@ describe('Requisições PUT com Frisby', () => {
         return frisby
             .put('https://restful-booker.herokuapp.com/booking/2', Book.updateBook())
             .inspectJSON()
-            .expect('status', 200);
+            .expect('status', 200)
+            .expect('json', {
+                firstname: "Jimi",
+                lastname: "Hendrix",
+                totalprice: 111,
+                depositpaid: true,
+                additionalneeds: "Breakfast"
+            })
+            .expect('json', 'bookingdates', {
+                checkin: "2018-01-01",
+                checkout: "2019-01-01"
+            })
     });
 });

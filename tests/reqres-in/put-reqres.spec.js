@@ -7,6 +7,12 @@ describe('Requisições PUT com Frisby', () => {
         return frisby
           .put('https://reqres.in/api/users/2', User.updateUser())
           .inspectJSON()
-          .expect('status', 200);
+          .expect('status', 200)
+          .expect('json', {
+            name: "Yngwie Malmsteen",
+            job: "Guitarrist"
+          })
       });
 });
+
+

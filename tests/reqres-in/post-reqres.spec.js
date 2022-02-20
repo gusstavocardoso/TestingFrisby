@@ -8,7 +8,13 @@ describe('Requisições POST com Frisby', () => {
     return frisby
       .post('https://reqres.in/api/users', User.createUser())
       .inspectJSON()
-      .expect('status', 201)      
+      .expect('status', 201)
+      .expect('json', {
+        name: "Joe Satrinai",
+        job: "Guitarrist"
+      })
   });
 });
+
+
 

@@ -33,6 +33,11 @@ describe('Requisições PATCH com Frisby', () => {
         return frisby
             .patch('https://restful-booker.herokuapp.com/booking/2', Book.partilUpdateBook())
             .inspectJSON()
-            .expect('status', 200);
+            .expect('status', 200)
+            .expect('json', {
+                firstname: "Jimi",
+                lastname: "Hendrix",
+                totalprice: 111,
+            });
     });
 });
